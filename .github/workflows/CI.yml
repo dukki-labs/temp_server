@@ -42,6 +42,6 @@ jobs:
         uses: superfly/flyctl-actions/setup-flyctl@master
       
       - name: Deploy our Spring Boot app to fly.io
-        run: flyctl deploy --image ghcr.io/phantom08266/spring-boot-flyio:latest
+        run: flyctl deploy
 
     
