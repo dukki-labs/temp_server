@@ -26,16 +26,14 @@ jobs:
       # BP_JVM_VERSION 17, because we use Java 17 inside our Maven build but Paketo defaults to 11
       # Explicitely defining the java-native-image buildpack as described here https://paketo.io/docs/howto/java/#configure-the-graalvm-version
       # to pin the GraalVM version (5.12.0 = GraalVM 21.3)
-      - name: Build app with pack CLI & publish to GitHub Container Registry
-        run: |
-          pack build ghcr.io/phantom08266/spring-boot-flyio:latest \
-              --builder paketobuildpacks/builder:tiny \
-              --buildpack paketo-buildpacks/java-native-image@5.12.0 \
-              --path . \
-              --env "BP_JVM_VERSION=8" \
-              --env "BP_NATIVE_IMAGE=true" \
-              --cache-image ghcr.io/phantom08266/spring-boot-flyio-paketo-cache-image:latest \
-              --publish
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/my-container-test:latest
 
 
       - name: Install flyctl via https://github.com/superfly/flyctl-actions
