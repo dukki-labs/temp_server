@@ -18,8 +18,8 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.CONTAINER_TOKEN }}
 
-      - name: Install pack CLI via the official buildpack Action https://github.com/buildpacks/github-actions#setup-pack-cli-action
-        uses: buildpacks/github-actions/setup-pack@v4.8.1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
 
       # Caching Paketo Build see https://stackoverflow.com/a/66598693/4964553
       # BP_OCI_SOURCE as --env creates the GitHub Container Registry <-> Repository link (https://paketo.io/docs/buildpacks/configuration/#applying-custom-labels)
