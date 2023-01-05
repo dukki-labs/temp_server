@@ -8,6 +8,6 @@ public class StateController {
 
     @GetMapping("/")
     public String index() {
-        return "Hello This is my first app test";
+        return "Hello This is my first app test june";
     }
 }
