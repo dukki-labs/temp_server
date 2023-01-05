@@ -41,9 +41,11 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          registry: docker.pkg.github.com
-          repository: ${{ github.actor }}/tech_research
-          tag_with_sha: true
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/my-container-test:latest
 
 
       - name: Install flyctl via https://github.com/superfly/flyctl-actions
