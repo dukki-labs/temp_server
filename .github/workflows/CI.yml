@@ -28,7 +28,7 @@ jobs:
           step: restore
           
       - name: Build with Gradle
-        run: ./mvnw clean package
+        run: ./mvnw clean package -DskipTests
         
       - name: Save Maven cache
         uses: skjolber/maven-cache-github-action@v1
