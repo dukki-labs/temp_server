@@ -8,6 +8,7 @@ jobs:
     env:
       FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
+
     steps:
       - uses: actions/checkout@v2
       
@@ -40,6 +41,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.CONTAINER_TOKEN }}
+          build-args: |
+            DB_PW=${{ secrets.DATABASE_PASSWORD }}
+            DB_URL=${{ secrets.DATABASE_URL }}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
