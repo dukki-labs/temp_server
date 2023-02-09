@@ -1,6 +1,4 @@
 
-server:
-  port: 8000
 # 정적파일 수정 시 새로고침 없어도 적용가능하도록 설정
 spring:
   devtools:
